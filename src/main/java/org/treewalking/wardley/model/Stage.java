@@ -4,5 +4,5 @@ public enum Stage {
     ONE,
     TWO,
     THREE,
-    FOUR;
+    FOUR
 }

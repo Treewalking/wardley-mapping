@@ -5,5 +5,5 @@ public enum Type {
     ACTIVITY,
     PRACTICE,
     DATA,
-    KNOWLEDGE;
+    KNOWLEDGE
 }
