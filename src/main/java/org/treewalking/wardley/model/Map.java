@@ -1,8 +1,11 @@
 package org.treewalking.wardley.model;
 
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 public class Map {
 
     private final List<Version> versions = new ArrayList<>();
@@ -20,6 +23,6 @@ public class Map {
     }
 
     public void incrementVersion() {
-        versions.add(new Version(++currentVersion));
+        versions.add(new Version(++currentVersion, versions.get(versions.size()-1)));
     }
 }

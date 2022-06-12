@@ -23,6 +23,7 @@ public class MapTest {
         map.incrementVersion();
         assertEquals(2, map.getVersions().size());
     }
+
     @Test
     public void testIncrementingTheVersionOnAnInitialMapHasVersionOfOne() {
         final Map map = new Map();
