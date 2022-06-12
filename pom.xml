@@ -10,7 +10,7 @@
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.projectlombok.version>1.18.8</org.projectlombok.version>
+        <org.projectlombok.version>1.18.24</org.projectlombok.version>
         <org.projectlombok.plugin.version>1.18.8.1</org.projectlombok.plugin.version>
         <org.junit.jupiter.version>5.8.2</org.junit.jupiter.version>
     </properties>
