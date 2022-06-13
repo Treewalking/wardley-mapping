@@ -1,8 +1,10 @@
 package org.treewalking.wardley.model;
 
+import lombok.NonNull;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ToString
@@ -23,6 +25,15 @@ public class Version {
     }
 
     public List<Position> getPositions() {
-        return positions;
+        return Collections.unmodifiableList(positions);
+    }
+
+    public void addPosition(@NonNull Position position) {
+        assert !positions.contains(position);
+        positions.add(position);
+    }
+
+    public void addDependency(@NonNull Position dependant, @NonNull Position dependee) {
+        dependant.addDependency(dependee);
     }
 }

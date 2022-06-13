@@ -3,6 +3,7 @@ package org.treewalking.wardley.model;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ToString
@@ -19,7 +20,7 @@ public class Map {
     }
 
     public List<Version> getVersions() {
-        return versions;
+        return Collections.unmodifiableList(versions);
     }
 
     public void incrementVersion() {

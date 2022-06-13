@@ -3,6 +3,7 @@ package org.treewalking.wardley.model;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MapTest {
     @Test
@@ -29,5 +30,14 @@ public class MapTest {
         final Map map = new Map();
         map.incrementVersion();
         assertEquals(1, map.getVersion());
+    }
+
+    @Test
+    public void testRetrievedVersionListIsImmutable() {
+        final Map map = new Map();
+
+        assertThrows(UnsupportedOperationException.class, () -> {
+            map.getVersions().add(new Version(2));
+        });
     }
 }

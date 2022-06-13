@@ -5,6 +5,8 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 
 @EqualsAndHashCode
@@ -14,7 +16,7 @@ public class Position {
     private final Component component;
     private final Stage stage;
 
-    private final Collection<Dependency> dependencies = new ArrayList<>();
+    private final List<Dependency> dependencies = new ArrayList<>();
 
     public Position(Component component, Stage stage) {
         this.component = component;
@@ -26,11 +28,15 @@ public class Position {
         this.stage = position.stage;
         position.dependencies.forEach(dependency -> dependencies.add(new Dependency(dependency)));
     }
-    public Collection<Dependency> getDependencies() {
-        return dependencies;
+    public List<Dependency> getDependencies() {
+        return Collections.unmodifiableList(dependencies);
     }
 
     public Component getComponent() {
         return component;
+    }
+
+    public void addDependency(Position dependee) {
+        dependencies.add(new Dependency(dependee));
     }
 }
