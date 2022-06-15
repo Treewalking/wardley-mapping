@@ -1,35 +1,43 @@
 package org.treewalking.wardley.model;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WardleyMap {
 
-    final Map<String, String> names = new HashMap<>();
-    final LinkedList<String> valueChain = new LinkedList<>();
+    final Map<String, Component> names = new HashMap<>();
+    final LinkedList<Component> valueChain = new LinkedList<>();
 
-    public void addComponent(String name) {
+    public void addComponent(String name, Type type, Stage stage) {
         if (names.containsKey(name)) {
             throw new IllegalArgumentException("Component already exists in the Map");
         }
-        names.put(name, name);
-        valueChain.addFirst(name);
+
+        final Component component = new Component(name, type, stage);
+        names.put(name, component);
+        valueChain.addFirst(component);
     }
 
-    public String getComponent(String name) {
+    public Component getComponent(String name) {
         return names.get(name);
     }
 
-    public void addComponentAfter(String before, String after) {
-        names.put(after, after);
-        final int index = valueChain.indexOf(before);
+    public void addComponentAfter(String before, String name, Type type, Stage stage) {
+        final int index =
+                valueChain.stream()
+                        .map(Component::getName)
+                        .collect(Collectors.toList())
+                        .indexOf(before);
+
         if (index == -1) {
             throw new IllegalArgumentException("Before Component does not exist");
         }
-        valueChain.add(index+1, after);
-
+        final Component component = new Component(name, type, stage);
+        names.put(name, component);
+        valueChain.add(index+1, component);
     }
 
-    public List<String> getComponents() {
+    public List<Component> getComponents() {
         return valueChain;
     }
 }
