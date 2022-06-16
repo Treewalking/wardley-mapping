@@ -1,5 +1,8 @@
 package org.treewalking.wardley.model;
 
 public enum Stage {
-    GENISIS
+    GENESIS,
+    CUSTOM,
+    PRODUCT,
+    UTILITY
 }
