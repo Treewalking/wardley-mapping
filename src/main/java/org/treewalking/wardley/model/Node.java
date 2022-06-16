@@ -1,12 +1,15 @@
 package org.treewalking.wardley.model;
 
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
+@ToString
 public abstract class Node {
-    private String name;
+    private final String name;
 
-    private Collection<Node> needs = new ArrayList<>();
+    private final Collection<Node> needs = new ArrayList<>();
     protected Node(final String name) {
         this.name = name;
     }

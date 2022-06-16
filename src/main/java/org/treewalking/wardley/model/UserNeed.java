@@ -1,5 +1,8 @@
 package org.treewalking.wardley.model;
 
+import lombok.ToString;
+
+@ToString
 public class UserNeed extends Node {
     protected UserNeed(String name) {
         super(name);
