@@ -8,7 +8,7 @@ import java.util.Collection;
 @ToString
 public class WardleyMap {
 
-    private String Name;
+    private String name;
 
     private String purpose;
 
@@ -16,5 +16,13 @@ public class WardleyMap {
 
     private final Collection<UserNeed> userNeeds = new ArrayList<>();
 
-    private Capability highestValueCapability;
+    private Capability highestValueCapability = null;
+
+    public WardleyMap(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
