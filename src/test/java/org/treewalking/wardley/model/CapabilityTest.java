@@ -26,7 +26,7 @@ public class CapabilityTest {
     static class TestCapability extends Capability {
 
         protected TestCapability(String name) {
-            super(name, Stage.CUSTOM);
+            super(name, Stage.CUSTOM, 0);
         }
     }
 }

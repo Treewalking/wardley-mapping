@@ -6,10 +6,12 @@ import lombok.ToString;
 public abstract class Capability extends Node {
 
     private final Stage stage;
+    private final int latitude;
 
-    protected Capability(final String name, final Stage stage) {
+    protected Capability(final String name, final Stage stage, final int latitude) {
         super(name);
         this.stage = stage;
+        this.latitude = latitude;
     }
 
     private Capability lowerValueCapability;
