@@ -8,7 +8,7 @@ import java.util.Collection;
 @ToString
 public class WardleyMap {
 
-    private String name;
+    private final String name;
 
     private String purpose;
 
@@ -24,5 +24,9 @@ public class WardleyMap {
 
     public String getName() {
         return name;
+    }
+
+    public Object getToplevelCapability() {
+        return  highestValueCapability;
     }
 }
