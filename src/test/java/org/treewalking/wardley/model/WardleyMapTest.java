@@ -2,8 +2,10 @@ package org.treewalking.wardley.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WardleyMapTest {
 
@@ -14,13 +16,30 @@ public class WardleyMapTest {
     }
 
     @Test
-    public void testMapHasNoTopLevelCapability() {
+    public void testNewMapHasNoCapabilities() {
         final WardleyMap map = givenAWardleyMap();
-        assertNull(map.getToplevelCapability());
+        assertTrue(map.getCapabilityValueChain().isEmpty());
+    }
+
+    @Test
+    public void testAddTheFirstCapabilityResultsInASingleEntry() {
+        final WardleyMap map = givenAWardleyMap();
+        map.addCapabilityAtEnd(new Activity("foo", Stage.GENESIS, 0));
+        assertEquals(new ArrayList<>(Arrays.asList(new Activity("foo", Stage.GENESIS, 0))),
+                map.getCapabilityValueChain());
+    }
+
+    @Test
+    public void testCannotAddADuplicateCapability() {
+        final WardleyMap map = givenAWardleyMap();
+        map.addCapabilityAtEnd(new Activity("foo", Stage.GENESIS, 0));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            map.addCapabilityAtEnd(new Activity("foo", Stage.GENESIS, 0));
+        });
+        assertEquals("A duplicate capability already exists", exception.getMessage());
     }
 
     private WardleyMap givenAWardleyMap() {
         return new WardleyMap("foo");
     }
-
 }

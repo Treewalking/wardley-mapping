@@ -1,11 +1,12 @@
 package org.treewalking.wardley.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-@ToString
+@ToString @EqualsAndHashCode
 public abstract class Node {
     private final String name;
 
@@ -17,5 +18,9 @@ public abstract class Node {
     protected void addNeed(final Node need) {
         assert !needs.contains(need);
         needs.add(need);
+    }
+
+    public Object getName() {
+        return name;
     }
 }

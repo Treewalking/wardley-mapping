@@ -1,12 +1,15 @@
 package org.treewalking.wardley.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@ToString
+@ToString @EqualsAndHashCode
 public abstract class Capability extends Node {
 
     private final Stage stage;
     private final int latitude;
+
+    private Evolution evolution;
 
     protected Capability(final String name, final Stage stage, final int latitude) {
         super(name);

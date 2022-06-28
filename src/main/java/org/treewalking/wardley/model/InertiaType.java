@@ -1,0 +1,8 @@
+package org.treewalking.wardley.model;
+
+public enum InertiaType {
+    CHANGE_OF_BUSINESS_RELATIONSHIP,
+    LOSS_OF_EXISTING_FINANCIAL_OR_PHYSICAL_CAPITOL,
+    LOSS_OF_POLITICAL_CAPITOL,
+    THREAT_TO_BARRIER_OF_ENTRY
+}

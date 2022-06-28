@@ -1,8 +1,9 @@
 package org.treewalking.wardley.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@ToString
+@ToString @EqualsAndHashCode
 public class User extends Node {
     protected User(String name) {
         super(name);
